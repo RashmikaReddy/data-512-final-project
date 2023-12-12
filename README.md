@@ -52,11 +52,40 @@ Note: File generated after generating smoke estimates, too big to be uploaded to
 | Data          | Prevalence percentage of Asthma in 10th graders |
 
 
-# Methodology and Coding Process
-In my project, I first tackle a large 2.8GB dataset from USGS about wildfires, focusing on events since 1963 near Yakima, WA, and creating a detailed smoke impact assessment. This part of the work produces a big file, smoke_estimate_yakima.json, which is too large for Github.
+# Methodology
 
-Next, I acquire Air Quality Index (AQI) data by using an EPA API key to fetch historical air quality records. Since Yakima lacks local weather stations, I have to cast a wider net, searching up to 250 miles away to find relevant data. This effort results in a comprehensive aqi.csv file covering the years 1985-2022.
+The project was methodically segmented into clear steps for ease of understanding and execution.
 
-Lastly, I analyze the wildfire data and AQI, visualizing the findings and predicting future smoke levels with a forecast extending 25 years, thanks to the Prophet forecasting tool. All these steps are detailed in a separate Reflections document.
+## Step 1: Wildfire Data Sourcing
+- **Data Source**: 'USGS_Wildland_Fire_Combined_Dataset.json' from the US Geological Survey.
+- **Dataset Size**: 2.8GB.
+- **Parsing Method**: Used GeoJSON reader libraries.
+- **Focus**: Fires post-1963 within a 1250-mile radius of Yakima, WA.
+- **Calculation**: Smoke Estimate = (AreaBurnt*FireIntensity)/DistanceFromCity.
+  - Factors in fire's distance, area burned, and intensity.
+  - Different fire types are weighted according to their intensity.
+
+## Step 2: Air Quality Index (AQI) Retrieval
+- **Data Source**: US AQS database accessed through a generated API key.
+- **Data Range**: Historical AQI data from 1985 to 2022.
+- **Methodology**: Created a spatial bounding box up to 250 miles from Yakima, encompassing data from multiple stations. 
+- **Data Processing**: Yearly data collection involved averaging out AQI values.
+
+## Step 3: Impact Analysis of Wildfire Data
+- **Data Used**: Collected smoke estimate data.
+- **Analysis Tools**: Visualizations such as histograms and time series graphs.
+- **Focus**: Examined the spread and impact of wildfires in the vicinity of Yakima and the correlation of smoke estimates against AQI.
+
+## Step 4: Project Extension for Public Health Insights
+- **Data Source**: Children's Alliance Provider dataset on asthma prevalence among tenth graders.
+- **Objective**: To understand the health impacts of smoke on local adolescents.
+- **Analysis Focus**: Offers a longitudinal view of health trends in the backdrop of environmental changes.
+
+## Step 5: Analysis of Asthma Rates with Smoke
+- **Data Integration**: Merged asthma data with previously calculated Smoke Estimate Data.
+- **Renaming for Clarity**: Renamed 'es_aqi' to 'smoke_estimate'.
+- **Analysis Method**: Performed correlation analysis using Pearson's correlation coefficient between Smoke Estimate and asthma_rate.
+- **Key Analysis**: Asthma Rate Trends Over Time with Smoke Estimate.
+  - Compared historical and predicted AQI values.
 
 
