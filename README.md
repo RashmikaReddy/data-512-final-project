@@ -24,13 +24,13 @@ Note: Original wildfire data file, too big to be uploaded to Github.
 | GIS_Acres          | Area of land burnt (in 10^7 acres)         |
 | Assigned_Fire_Type | Type of wildfire (e.g., wildfire, prescribed fire) |
 
-### aqi.csv
+### average_aqi_by_year.csv
 Note: File generated from calling AQS API.
 
 | Feature | Description                                  |
 |---------|----------------------------------------------|
 | Year    | All years for which AQIs are available       |
-| avg_aqi | Average yearly AQI values around Yakima     |
+| estimated_aqi |Estimated AQI                           |
 
 ### smoke_estimate_yakima.json
 Note: File generated after generating smoke estimates, too big to be uploaded to Github.
@@ -41,7 +41,7 @@ Note: File generated after generating smoke estimates, too big to be uploaded to
 | distance       | Distance of fire from North Platte           |
 | smoke_estimate | Computed impact of smoke in Yakima County    |
 
-### Additional Data Columns
+### percentage_of_tenthgraders_with_asthama.excel
 
 | Column Name   | Description                                  |
 |---------------|----------------------------------------------|
